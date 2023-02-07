@@ -51,6 +51,81 @@ int5_sort_nr(xs) for every 5-tuple xs of the type int5.
 
 fun
 int5_sort_nr(xs: int5): int5 =
+let
+    val (x1, x2, x3, x4, x5) = xs
+  in
+    if x1 <= x2 then
+      if x2 <= x3 then
+        if x3 <= x4 then
+          if x4 <= x5 then (x1, x2, x3, x4, x5)
+          else (x1, x2, x3, x5, x4)
+        else if x3 <= x5 then
+          if x5 <= x4 then (x1, x2, x3, x5, x4)
+          else (x1, x2, x5, x3, x4)
+        else (x1, x2, x5, x4, x3)
+      else if x2 <= x4 then
+        if x4 <= x3 then
+          if x3 <= x5 then (x1, x2, x4, x3, x5)
+          else (x1, x2, x4, x5, x3)
+        else if x4 <= x5 then (x1, x2, x4, x5, x3)
+        else (x1, x2, x5, x4, x3)
+      else if x2 <= x5 then
+        if x5 <= x3 then (x1, x2, x5, x3, x4)
+        else if x5 <= x4 then (x1, x2, x5, x4, x3)
+        else (x1, x5, x2, x4, x3)
+      else (x1, x5, x2, x3, x4)
+    else if x1 <= x3 then
+      if x3 <= x2 then
+        if x2 <= x4 then
+          if x4 <= x5 then (x1, x3, x2, x4, x5)
+          else (x1, x3, x2, x5, x4)
+        else if x2 <= x5 then (x1, x3, x2, x5, x4)
+        else (x1, x3, x5, x2, x4)
+      else if x3 <= x4 then
+        if x4 <= x2 then
+          if x2 <= x5 then (x1, x3, x4, x2, x5)
+          else (x1, x3, x4, x5, x2)
+        else if x4 <= x5 then (x1, x3, x4, x5, x2)
+        else (x1, x3, x5, x4, x2)
+      else if x3 <= x5 then (x1, x3, x5, x2, x4)
+      else if x5 <= x2 then (x1, x3, x5, x2, x4)
+      else (x1, x5, x3, x2, x4)
+    else if x1 <= x4 then
+      if x4 <= x2 then
+        if x2 <= x3 then
+          if x3 <= x5 then (x1, x4, x2, x3, x5)
+          else (x1, x4, x2, x5, x3)
+else if x2 <= x5 then (x1, x4, x2, x5, x3)
+else (x1, x4, x5, x2, x3)
+else if x4 <= x3 then
+if x3 <= x2 then
+if x2 <= x5 then (x1, x4, x3, x2, x5)
+else (x1, x4, x3, x5, x2)
+else if x3 <= x5 then (x1, x4, x3, x5, x2)
+else (x1, x4, x5, x3, x2)
+else if x4 <= x5 then (x1, x4, x5, x2, x3)
+else if x5 <= x2 then (x1, x4, x5, x2, x3)
+else (x1, x5, x4, x2, x3)
+else if x1 <= x5 then
+if x5 <= x2 then
+if x2 <= x3 then
+if x3 <= x4 then (x1, x5, x2, x3, x4)
+else (x1, x5, x2, x4, x3)
+else if x2 <= x4 then (x1, x5, x2, x4, x3)
+else (x1, x5, x4, x2, x3)
+else if x5 <= x3 then
+if x3 <= x2 then
+if x2 <= x4 then (x1, x5, x3, x2, x4)
+else (x1, x5, x3, x4, x2)
+else if x3 <= x4 then (x1, x5, x3, x4, x2)
+else (x1, x5, x4, x3, x2)
+else if x5 <= x4 then (x1, x5, x4, x2, x3)
+else if x5 <= x4 then (x1, x5, x4, x2, x3)
+else (x1, x4, x5, x2, x3)
+else (x5, x1, x2, x3, x4)
+end
+
+
 (*
 Please Give your implementation as follows:
 *)
